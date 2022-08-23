@@ -15,21 +15,38 @@ import { useUiStore, useCalendarStore, useAuthStore } from "../../hooks";
 import { useEffect } from "react";
 
 export const CalendarPage = () => {
+  const [deletetable, setDeletetable] = useState(false);
+
   const { user } = useAuthStore();
 
   const { openEventModal } = useUiStore();
 
-  const { events, setActiveEvent, startLoadingEvents } = useCalendarStore();
+  const { events, setActiveEvent, startLoadingEvents, activeEvent } =
+    useCalendarStore();
 
   const [lastView, setLastView] = useState(
     localStorage.getItem("lastView") || "month"
   );
 
   const onDoubleClick = (event) => {
-    openEventModal();
+    const isMyEvent =
+      user.uid === event.user._id || user.uid === event.user.uid;
+
+    if (isMyEvent) {
+      openEventModal();
+    }
   };
+
   const onSelect = (event) => {
     setActiveEvent(event);
+    const isMyEvent =
+      user.uid === event.user._id || user.uid === event.user.uid;
+
+    if (isMyEvent) {
+      setDeletetable(true);
+    } else {
+      setDeletetable(false);
+    }
   };
   const onChangeView = (event) => {
     localStorage.setItem("lastView", event);
@@ -41,13 +58,15 @@ export const CalendarPage = () => {
   }, []);
 
   const eventStyleGetter = (event, start, end, isSelected) => {
-    const isMyEvent = user.uid === event.user._id || user.uid === event.user.id;
+    const isMyEvent =
+      user.uid === event.user._id || user.uid === event.user.uid;
 
     const style = {
-      backgroundColor: isMyEvent ? "#0284C7" : "#465660",
+      backgroundColor: isMyEvent ? "#347CF7" : "#465660",
       borderRadius: "0px",
       opacity: 0.8,
       color: "white",
+      cursor: isMyEvent ? "pointer" : "not-allowed",
     };
 
     return {
@@ -80,7 +99,7 @@ export const CalendarPage = () => {
 
       <CalendarModal />
       <FabAddNew />
-      {localStorage.getItem("token") && <FabDelete />}
+      {deletetable && <FabDelete />}
     </>
   );
 };

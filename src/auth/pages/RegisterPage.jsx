@@ -19,8 +19,6 @@ export const RegisterPage = () => {
 
   const { startRegister, errorMsg, status } = useAuthStore();
 
-  console.log(errorMsg);
-
   const {
     register,
     handleSubmit,
@@ -64,7 +62,7 @@ export const RegisterPage = () => {
                 id="name"
                 type="text"
                 autoComplete="off"
-                className={`peer w-full h-10 px-6 border-b-2 outline-none ${
+                className={`peer w-full h-10 px-6 border-b-2 outline-none caret-sky-500 ${
                   errors.name ? "focus:border-red-400" : "focus:border-sky-500"
                 } focus:border-sky-500 focus:border-b-[3px] border-gray-300 placeholder-gray-600 invalid:border-b-[3px] focus:invalid:no-underline focus:invalid:outline-none disabled:border-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-500 placeholder-transparent`}
                 placeholder="Name"
@@ -94,7 +92,7 @@ export const RegisterPage = () => {
                 id="email"
                 type="string"
                 autoComplete="off"
-                className={`peer w-full h-10 px-6 border-b-2 outline-none ${
+                className={`peer w-full h-10 px-6 border-b-2 outline-none caret-sky-500 ${
                   errors.email ? "focus:border-red-400" : "focus:border-sky-500"
                 } focus:border-sky-500 focus:border-b-[3px] border-gray-300 placeholder-gray-600 invalid:border-b-[3px] focus:invalid:no-underline focus:invalid:outline-none disabled:border-gray-200 disabled:bg-gray-100 disabled:placeholder-gray-500 placeholder-transparent`}
                 placeholder="Your email"
@@ -127,7 +125,7 @@ export const RegisterPage = () => {
                 id="password"
                 type="password"
                 autoComplete="off"
-                className={`peer w-full h-10 px-6 border-b-2 outline-none ${
+                className={`peer w-full h-10 px-6 border-b-2 outline-none caret-sky-500 ${
                   errors.password
                     ? "focus:border-red-400"
                     : "focus:border-sky-500"
@@ -162,7 +160,7 @@ export const RegisterPage = () => {
                 id="password_repeat"
                 type="password"
                 autoComplete="off"
-                className={`peer w-full h-10 px-6 border-b-2 outline-none ${
+                className={`peer w-full h-10 px-6 border-b-2 outline-none caret-sky-500 ${
                   errors.password
                     ? "focus:border-red-400"
                     : "focus:border-sky-500"

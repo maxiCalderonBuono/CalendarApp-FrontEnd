@@ -76,7 +76,7 @@ export const CalendarModal = () => {
     <Transition show={isEventModalOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="fixed inset-0 z-30  flex flex-row items-center justify-center h-full overflow-y-auto backdrop-blur-[5px] bg-red-600"
+        className="fixed inset-0 z-30  flex flex-row items-center justify-center h-full overflow-y-auto backdrop-blur-[5px]"
         onClose={() => closeEventModal()}
       >
         <Transition.Child
@@ -99,23 +99,23 @@ export const CalendarModal = () => {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          <div className="relative flex flex-col items-center m-1 w-[500px] h-[70%] lg:h-[90%] bg-white rounded-md">
+          <div className="relative flex flex-col items-center m-1 w-[500px] h-[80%] md:h-[65%] bg-white rounded-md">
             <Dialog.Title
               as="h1"
-              className="absolute mt-3 text-2xl font-bold text-text-primary modal-2:top-5 border-b-2 w-[80%] text-center"
+              className="absolute mt-3 md:mt-8 lg:mt-2 text-2xl font-bold border-b-2 w-[80%] text-center"
             >
               New Event
             </Dialog.Title>
             <Dialog.Description
               as="p"
-              className="absolute px-4 mt-2 text-sm text-center modal-1:px-0 top-12 modal-2:top-20 text-text-secondary"
+              className="absolute px-4 mt-2 text-sm text-center top-12 md:top-16"
             >
               Please fill in the information
             </Dialog.Description>
 
             <form
               onSubmit={handleSubmit}
-              className="absolute flex flex-col items-center w-full top-28 px-3 space-y-5"
+              className="absolute flex flex-col items-center w-full top-28 px-3 space-y-5 mb-3"
             >
               <div className="flex flex-col w-full items-center space-y-2 border-b-2 pb-5">
                 <label

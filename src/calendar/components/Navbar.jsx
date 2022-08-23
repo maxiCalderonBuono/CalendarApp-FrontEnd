@@ -26,7 +26,7 @@ export const Navbar = () => {
           className="mx-2 rounded-md text-2xl text-red-600"
         >
           <i className="fas fa-sign-out-alt"></i>
-          <span> Salir</span>
+          <span> Exit </span>
         </button>
       </div>
     </div>
