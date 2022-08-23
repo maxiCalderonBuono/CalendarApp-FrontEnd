@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+
 # Calendar APP
 
 ## Development steps
