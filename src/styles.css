@@ -3,5 +3,11 @@
 @tailwind utilities;
 
 .position-absolute {
-    position: absolute;
+  position: absolute;
+}
+
+@layer base {
+  body {
+    font-family: "Inter", sans-serif;
+  }
 }

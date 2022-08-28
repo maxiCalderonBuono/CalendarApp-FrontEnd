@@ -1,8 +1,10 @@
-import { useAuthStore } from "../../hooks";
+import { useAuthStore, useUiStore } from "../../hooks";
 import { ToggleButton } from "./atoms/ToggleButton";
 
 export const Navbar = () => {
   const { user, startLogout } = useAuthStore();
+
+  const { isLanguageChanging, changeLanguage } = useUiStore();
 
   return (
     <div className="flex justify-between bg-gray-900 text-end py-3 px-4">
@@ -11,16 +13,12 @@ export const Navbar = () => {
           <i className="fas fa-calendar-alt"></i>
           &nbsp; {user.name}
         </span>
-        {/* <div className="text-white text-sm h-8 flex items-center">
-          <span className="cursor-pointer">EN</span>
-          &nbsp;
-          <span>I</span>
-          &nbsp;
-          <span className="cursor-pointer">ES</span>
-        </div> */}
       </div>
       <div className="flex space-x-3 items-center">
-        {/* <ToggleButton /> */}
+        <ToggleButton
+          enabled={isLanguageChanging}
+          toggleFunction={changeLanguage}
+        />
         <button
           onClick={startLogout}
           className="mx-2 rounded-md text-2xl text-red-600"

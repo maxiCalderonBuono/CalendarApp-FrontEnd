@@ -26,8 +26,10 @@ export const LoginPage = () => {
   // };
   return (
     <section className="flex flex-col justify-center lg:flex-row w-[90%] h-screen mx-auto  items-center">
-      <div className="w-3/4 lg:w-1/2 flex flex-col items-center justify-center">
-        <p className="text-5xl text-center font-bold italic">Calenly</p>
+      <div className="lg:w-1/2 w-[60%]  flex flex-col items-center justify-center">
+        <p className="text-3xl md:text-5xl text-center font-bold italic">
+          Calenly
+        </p>
         <img
           className="w-3/4"
           src="https://res.cloudinary.com/dvqlenul5/image/upload/v1656419993/accounts___user_users_profile_account_man_people_website_browser_webpage_mn77ws.svg"
@@ -116,15 +118,15 @@ export const LoginPage = () => {
                 </span>
               </button>
             </div>
-            <div className="space-y-4">
+            <div className="mt-0">
               {status === "checking" ? (
                 <LoadingButton />
               ) : (
                 <button
                   type="submit"
-                  className=" block px-6 py-3 rounded-xl bg-sky-500 w-full hover:bg-sky-600 focus:bg-sky-700 active:bg-sky-500 disabled:pointer-events-none disabled:opacity-40 disabled:bg-gray-400"
+                  className=" block px-6 py-2 md:py-3 rounded-xl bg-sky-500 w-full hover:bg-sky-600 focus:bg-sky-700 active:bg-sky-500 disabled:pointer-events-none disabled:opacity-40 disabled:bg-gray-400"
                 >
-                  <span className="text-lg text-white ">Login</span>
+                  <span className="text-md md:text-lg text-white ">Login</span>
                 </button>
               )}
               <Link to="/auth/register" className="block w-max p-3 -ml-3">
@@ -134,7 +136,7 @@ export const LoginPage = () => {
               </Link>
             </div>
           </form>
-          <div className="w-full mt-4 pt-6 border-t space-y-6">
+          <div className="w-3/4 pt-6 border-t space-y-6">
             <div className="w-full h-12">
               {errorMsg?.type === "login" && <Error msg={errorMsg.error} />}
             </div>

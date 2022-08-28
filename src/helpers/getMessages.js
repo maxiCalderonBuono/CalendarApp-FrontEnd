@@ -1,8 +1,8 @@
 export const getMessages = () => {
   return {
     allDay: "Todo el día",
-    previous: "<",
-    next: ">",
+    previous: "Atrás",
+    next: "Siguiente",
     today: "Hoy",
     month: "Mes",
     week: "Semana",

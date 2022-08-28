@@ -4,6 +4,7 @@ export const uiSlice = createSlice({
   name: "ui",
   initialState: {
     isEventModalOpen: false,
+    isLanguageChanging: false,
   },
   reducers: {
     onOpenEventModal: (state) => {
@@ -12,7 +13,12 @@ export const uiSlice = createSlice({
     onCloseEventModal: (state) => {
       state.isEventModalOpen = false;
     },
+
+    onChangeLanguage: (state) => {
+      state.isLanguageChanging = !state.isLanguageChanging;
+    },
   },
 });
 
-export const { onOpenEventModal, onCloseEventModal } = uiSlice.actions;
+export const { onOpenEventModal, onCloseEventModal, onChangeLanguage } =
+  uiSlice.actions;

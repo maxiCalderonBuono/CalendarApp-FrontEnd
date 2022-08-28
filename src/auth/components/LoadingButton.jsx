@@ -4,8 +4,8 @@ export const LoadingButton = () => {
   return (
     <button
       type="submit"
-      className=" px-6 py-3 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-sky-700 active:bg-sky-500 cursor-not-allowed 
-       flex justify-center items-center focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-lg font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2"
+      className=" px-6 py-2 md:py-3 rounded-xl bg-sky-500 hover:bg-sky-600 focus:bg-sky-700 active:bg-sky-500 cursor-not-allowed 
+       flex justify-center items-center focus:ring-blue-500 focus:ring-offset-blue-200 text-white w-full transition ease-in duration-200 text-center text-md md:text-lg font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2"
     >
       <svg
         width="20"

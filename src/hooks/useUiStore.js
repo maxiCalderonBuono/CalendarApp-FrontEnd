@@ -1,10 +1,16 @@
 import { useSelector, useDispatch } from "react-redux";
-import { onOpenEventModal, onCloseEventModal } from "../store";
+import {
+  onOpenEventModal,
+  onCloseEventModal,
+  onChangeLanguage,
+} from "../store";
 
 export const useUiStore = () => {
   const dispatch = useDispatch();
 
-  const { isEventModalOpen } = useSelector((store) => store.ui);
+  const { isEventModalOpen, isLanguageChanging } = useSelector(
+    (store) => store.ui
+  );
 
   const openEventModal = () => {
     dispatch(onOpenEventModal());
@@ -14,13 +20,19 @@ export const useUiStore = () => {
     dispatch(onCloseEventModal());
   };
 
+  const changeLanguage = () => {
+    dispatch(onChangeLanguage());
+  };
+
   return {
     //Properties
     isEventModalOpen,
+    isLanguageChanging,
 
     //Methods
 
     openEventModal,
     closeEventModal,
+    changeLanguage,
   };
 };

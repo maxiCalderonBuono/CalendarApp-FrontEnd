@@ -13,13 +13,14 @@ import { localizer, getMessages } from "../../helpers";
 import { useState } from "react";
 import { useUiStore, useCalendarStore, useAuthStore } from "../../hooks";
 import { useEffect } from "react";
+import { isToday } from "date-fns";
 
 export const CalendarPage = () => {
   const [deletetable, setDeletetable] = useState(false);
 
   const { user } = useAuthStore();
 
-  const { openEventModal } = useUiStore();
+  const { openEventModal, isLanguageChanging } = useUiStore();
 
   const { events, setActiveEvent, startLoadingEvents, activeEvent } =
     useCalendarStore();
@@ -29,12 +30,7 @@ export const CalendarPage = () => {
   );
 
   const onDoubleClick = (event) => {
-    const isMyEvent =
-      user.uid === event.user._id || user.uid === event.user.uid;
-
-    if (isMyEvent) {
-      openEventModal();
-    }
+    openEventModal();
   };
 
   const onSelect = (event) => {
@@ -57,16 +53,30 @@ export const CalendarPage = () => {
     startLoadingEvents();
   }, []);
 
+  const dayPropGetter = (date) => {
+    const dateToChange = isToday(date);
+
+    const style = {
+      backgroundColor: dateToChange ? "rgba(92,150,249,0.4)" : "",
+    };
+
+    return {
+      style,
+    };
+  };
+
   const eventStyleGetter = (event, start, end, isSelected) => {
     const isMyEvent =
       user.uid === event.user._id || user.uid === event.user.uid;
 
     const style = {
       backgroundColor: isMyEvent ? "#347CF7" : "#465660",
-      borderRadius: "0px",
+      borderRadius: "3px",
+      outlineColor: isSelected ? "#EC4899" : " ",
+      outlineWidth: "3px",
+      outlineOffset: "0.2rem",
       opacity: 0.8,
       color: "white",
-      cursor: isMyEvent ? "pointer" : "not-allowed",
     };
 
     return {
@@ -79,14 +89,15 @@ export const CalendarPage = () => {
       <Navbar />
 
       <Calendar
-        culture="es"
+        culture={isLanguageChanging ? "es" : ""}
+        dayPropGetter={dayPropGetter}
         localizer={localizer}
         events={events}
         defaultView={lastView}
         startAccessor="start"
         endAccessor="end"
         style={{ height: "calc( 100vh - 56px )" }}
-        messages={getMessages()}
+        messages={isLanguageChanging ? getMessages() : ""}
         eventPropGetter={eventStyleGetter}
         components={{ event: CalendarEvent }}
         onDoubleClickEvent={onDoubleClick}

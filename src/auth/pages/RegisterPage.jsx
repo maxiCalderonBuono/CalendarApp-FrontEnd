@@ -211,7 +211,7 @@ export const RegisterPage = () => {
               </p>
             </div>
           </form>
-          <div className="w-3/4 mt-12 pt-6 border-t space-y-6">
+          <div className="w-3/4 mt-2 pt-6 border-t space-y-6">
             <div className="w-full h-2">
               {errorMsg?.type === "register" && <Error msg={errorMsg.error} />}
             </div>
